@@ -56,11 +56,42 @@ html {
 	float: left;
 }
 
+
+/* TEAM GRID */
+
+#teamGrid {
+	grid-template-areas:
+	'image title title title title title'
+	'image blurb blurb blurb blurb blurb';
+	
+	display: inline-grid;
+	column-gap: 10px;
+}
+
+#teamMemberHeadshot {
+	height: 100%;
+	display: grid;
+	grid-area: image;
+	aspect-ratio: 1 / 1;
+}
+
+#teamMemberName {
+	grid-area: title;
+	text-align: left;
+}
+
+#teamMemberBlurb {
+	display: grid;
+	grid-area: blurb;
+	text-align: left;
+}
+
+/* OTHER */
+
 #mainLogo {display: inline; width: 100px; height: 100px}
-#square {aspect-ratio: 1 / 1; display: block;}
 #video {aspect-ratio: 1 / 1; width: 300px; height: 300px;}
 #headerContainer {display: inline-flex; vertical-align: top; padding-left: 10px; padding-right: 80px;}
-#subText{justify-content: left; text-align: left;}
+#leftText{text-align: left}
 #headerText{display: block}
 
 #scrollBar {

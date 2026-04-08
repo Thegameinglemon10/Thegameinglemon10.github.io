@@ -120,7 +120,7 @@ function moveScrollBar(scrollPositionY, isMousePosition) {
     canScroll = (maxScrollY > 0);
 
     // Check For Scroll Possibility
-    scrollStyle.setProperty("visibility", (canScroll ? "visible" : "hidden"));
+    //scrollStyle.setProperty("visibility", (canScroll ? "visible" : "hidden"));
     if (!canScroll) {return};
 
     // Get New Position
@@ -130,20 +130,18 @@ function moveScrollBar(scrollPositionY, isMousePosition) {
     var newPosition = `calc(${scrollPercentage}% - ${percentageModifier}px)`
 
     // Set New Position
-    //window.scrollTo(0, `${scrollPercentage}%`)
-    //window.scrollY = `${scrollPercentage}%`
     thumbTopSyle.setProperty("top", newPosition)
     return scrollPercentage
 };
 
 function addClickListener() {
-     // Get ScrollBar Elements
-     var scrollElements = getScrollBar();
+    // Get ScrollBar Elements
+    var scrollElements = getScrollBar();
 
-     // Assign Variables
-     var scrollThumbTop = scrollElements.ScrollThumbTop;
-     var scrollBar = scrollElements.ScrollBar;
-     var mouseDown = false;
+    // Assign Variables
+    var scrollThumbTop = scrollElements.ScrollThumbTop;
+    var scrollBar = scrollElements.ScrollBar;
+    var mouseDown = false;
 
     // Activate Scroll Bar
     function activate(Event, wasClicked) {
@@ -179,3 +177,9 @@ window.addEventListener("scroll", (event) => {moveScrollBar(this.scrollY)});
 
 // Move Position When Clicked / Dragged
 addClickListener();
+
+// Change Visibility On Zoom
+window.addEventListener("resize", function (event) {
+    var scrollElements = getScrollBar(); var maxScrollY = getMaxScrollY();
+    scrollElements.ScrollBar.style.setProperty("visibility", ((maxScrollY > 0) ? "visible" : "hidden"));
+});
